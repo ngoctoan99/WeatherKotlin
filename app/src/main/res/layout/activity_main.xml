@@ -310,7 +310,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:text= "Some thing went wrong"
+        android:text= "Don't can find this city"
         android:layout_centerInParent="true"
         android:id="@+id/error"></TextView>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnback"
+        android:text="Back"
+        android:backgroundTint="@color/black"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        android:layout_below="@+id/error"
+        android:layout_centerInParent="true"></Button>
 </RelativeLayout>

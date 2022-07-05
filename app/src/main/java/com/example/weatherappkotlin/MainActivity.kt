@@ -1,9 +1,11 @@
 package com.example.weatherappkotlin
 
+import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -13,11 +15,15 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    val CITY: String = "nha trang,vn"
     val API: String ="aa5cee96c064630348f31a89f08f65bf"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val btnback = findViewById<Button>(R.id.btnback)
+        btnback.setOnClickListener {
+            val intent = Intent(this, SelectionCity::class.java)
+            startActivity(intent)
+        }
         weatherTask().execute()
     }
     inner class weatherTask(): AsyncTask<String, Void, String>(){
@@ -31,7 +37,9 @@ class MainActivity : AppCompatActivity() {
         override fun doInBackground(vararg params: String?): String? {
             var response:String?
             try{
-                response = URL("https://api.openweathermap.org/data/2.5/weather?q=$CITY&units=metric&appid=$API")
+                var bundle :Bundle ?=intent.extras
+                var city = bundle!!.getString("city")
+                response = URL("https://api.openweathermap.org/data/2.5/weather?q=$city&units=metric&appid=$API")
                     .readText(Charsets.UTF_8)
             }catch (s: Exception){
                 response = null
@@ -78,6 +86,7 @@ class MainActivity : AppCompatActivity() {
             }catch (e : java.lang.Exception){
                 findViewById<ProgressBar>(R.id.load).visibility = View.GONE
                 findViewById<TextView>(R.id.error).visibility = View.VISIBLE
+                findViewById<Button>(R.id.btnback).visibility = View.VISIBLE
             }
         }
     }
