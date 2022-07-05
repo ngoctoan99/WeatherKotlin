@@ -15,12 +15,15 @@ class SelectionCity : AppCompatActivity() {
         val editCity = findViewById<EditText>(R.id.etcity)
         val btnShow = findViewById<Button>(R.id.btnshow)
         btnShow.setOnClickListener {
-            val city:String = editCity.text.toString().trim()
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("city",city)
-            editCity.text = null
-            startActivity(intent)
-
+            if(editCity.text.toString().trim().isEmpty()){
+                Toast.makeText(this, "EditText is empty, you need write the city", Toast.LENGTH_SHORT).show()
+            }else {
+                val city:String = editCity.text.toString().trim()
+                val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra("city",city)
+                editCity.text = null
+                startActivity(intent)
+            }
         }
     }
 }

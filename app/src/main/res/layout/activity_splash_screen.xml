@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashScreen"
+    android:background="@drawable/custom_color_mh">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginLeft="180dp"
+        android:background="@drawable/sunnywhite"></ImageView>
+
+    <ImageView
+        android:id="@+id/iconapp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/windwhite"></ImageView>
+    <TextView
+        android:layout_below="@+id/iconapp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Weather App"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="27dp"
+        ></TextView>
+</RelativeLayout>
